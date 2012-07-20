@@ -11,11 +11,6 @@
 </p>
 
 <p>
-  <b>Status:</b>
-  <%= @project.status %>
-</p>
-
-<p>
   <b>Start date:</b>
   <%= @project.start_date %>
 </p>
@@ -24,6 +19,8 @@
   <b>Due date:</b>
   <%= @project.due_date %>
 </p>
+
+<%= link_to "Add team to project", new_project_team_path(@project) %><br/>
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

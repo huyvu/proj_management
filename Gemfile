@@ -36,3 +36,18 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :development, :test do
+  gem 'watchr'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'database_cleaner'
+  # gem 'capybara'
+  # gem "capybara-webkit"
+  gem 'fabrication'
+  # gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'shoulda-matchers'
+gem 'database_cleaner'
+gem 'shoulda'
+gem 'factory_girl_rails'
+end
