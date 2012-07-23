@@ -7,9 +7,17 @@
 
 <p>
   <b>Project:</b>
-  <%= @team.project %>
+  <%= @team.project.name %>
 </p>
 
+<p>
+  <h4>Members:</h4>
+  <ul>
+  <% @team.members.each do |mem| %>
+  	<li><%= mem.name %></li>
+  <% end %>
+  </ul>
+</p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Edit', edit_project_team_path(@team.project_id,@team) %> |
+<%= link_to 'Back', project_path(@team.project_id) %>

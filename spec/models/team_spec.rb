@@ -28,7 +28,8 @@ describe Team do
 	describe "name with more than 140 characters" do
 	    before{ @team.name = "a"*141}
 	    it{ should_not be_valid}
-	end	
+	end
+
   end
   
   

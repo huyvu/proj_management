@@ -1,6 +1,8 @@
 ProjManagement::Application.routes.draw do
   
 
+  resources :members
+
   resources :projects do
     resources :teams  
   end

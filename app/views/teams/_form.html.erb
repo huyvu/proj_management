@@ -1,4 +1,4 @@
-<%= form_for(@team, :url=>project_teams_path(@project)) do |f| %>
+<%= form_for [@project, @team] do |f| %>
   <% if @team.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
@@ -16,7 +16,18 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <% for member in Member.find(:all) %>
+      <div>
+        <%= check_box_tag "team[member_ids][]", member.id, @team.members.include?(member) %>
+        <%= member.name %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit %><%= link_to "cancel" , project_path(@project) %>
   </div>
 <% end %>
+
+

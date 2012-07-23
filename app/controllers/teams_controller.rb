@@ -35,12 +35,15 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-    @team = Team.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @team = @project.teams.find(params[:id])
+    # @team = Team.find(params[:id])
   end
 
   # POST /teams
   # POST /teams.json
   def create
+    params[:team][:member_ids] ||= []
     @project = Project.find(params[:project_id])
     @team = @project.teams.build(params[:team])
 
@@ -58,11 +61,14 @@ class TeamsController < ApplicationController
   # PUT /teams/1
   # PUT /teams/1.json
   def update
-    @team = Team.find(params[:id])
+    params[:team][:member_ids] ||= []
+    @project = Project.find(params[:project_id])
+    @team = @project.teams.find(params[:id])
+    # @team = Team.find(params[:id])
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to project_team_path, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

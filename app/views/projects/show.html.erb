@@ -20,6 +20,12 @@
   <%= @project.due_date %>
 </p>
 
+<p>Teams</p>
+<ul>
+<% @project.teams.order('name ASC').each do |t| %>
+	<li><%= link_to "#{t.name}", project_team_path(@project,t.id) %></li>
+<% end %>
+</ul>
 <%= link_to "Add team to project", new_project_team_path(@project) %><br/>
 
 
