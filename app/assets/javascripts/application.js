@@ -20,6 +20,7 @@
 
 
 	$(function (){
-	 $('#project_start_date').datepicker({ dateFormat: "yy-mm-dd"});
-	 $('#project_due_date').datepicker({ dateFormat: "yy-mm-dd"});
+	 $('#project_start_date,#project_due_date,#task_start_date,#task_due_date').datepicker({ dateFormat: "yy-mm-dd"});
+	 $('#proj_accord').accordion({ autoHeight: false });
+	 $('#team_accord').accordion();
 	 });

@@ -11,6 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+
  /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -61,4 +63,77 @@ table {
 }
 /* END RESET CSS */
 
+body{
+	font-family: Helvetica,Arial,sans-serif;
+}
 
+/******** PAGE-WRAP **********/
+#page-wrap{
+	min-width: 960px;
+	max-width: 100%;
+	margin:0 auto;
+}
+/******** END PAGE-WRAP **********/
+
+/**** HEADER STYLE *****/
+#header{
+	height:39px;
+	padding:10px 0 ;
+	background:#2A2E36;
+}
+#top_menu{
+	height:100%;
+	padding-left: 20px;
+}
+#top_menu ul li{
+	display:inline-block;
+	padding:10px 10px 10px 10px;
+	margin-right:10px;
+	background:#3F4551;
+	border-radius: 3px;
+}
+#top_menu ul li a{
+	text-decoration: none;
+	color:white;
+	font-size:12px;
+	font-family: "Droid Sans",Helvetica,sans-serif;
+	font-weight:bold;
+	line-height: 1.125em;
+}
+/****  END HEADER STYLE *****/
+
+/**** FORM ELEMENT STYLE *****/
+form input[type="text"], input[type="password"], textarea{
+	border:1px solid #d3d3d3;
+	padding:12px 7px;
+	border-radius: 3px;
+}
+form input[type="text"]:focus, input[type="password"]:focus, textarea:focus{
+	border:1px solid #bbbdbe;
+}
+form input[type="password"], input[type="text"]{
+	width:300px;
+}
+
+form textarea{
+	width:430px;
+	height:180px;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 14px;
+}
+/**** FORM ELEMENT STYLE *****/
+#sidebar{
+float:left;
+padding:20px 30px 0 20px;
+width:200px;
+}
+#main{
+padding-left:250px;
+padding-top:20px;
+}
+
+#team_accord{
+width:150px;
+padding-right:20px;
+text-align:center;
+}

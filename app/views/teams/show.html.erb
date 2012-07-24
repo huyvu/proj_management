@@ -14,7 +14,7 @@
   <h4>Members:</h4>
   <ul>
   <% @team.members.each do |mem| %>
-  	<li><%= mem.name %></li>
+  	<li><%= link_to "#{mem.name}", mem  %></li>
   <% end %>
   </ul>
 </p>

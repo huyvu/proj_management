@@ -9,7 +9,49 @@
 </head>
 <body>
 
-<%= yield %>
+	<div id="page-wrap">
+		<div id="header">
+			<div id="top_menu">
+				<ul>
+					<li><a href="#">Login as admin@example.com</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Log off</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- end of #header -->
+
+		<div id="sidebar">
+			<div id="proj_accord">
+				<% for project in Project.all %>
+					<h3><a href=""><%= project.name%></a></h3>
+					<div id="team_accord">
+
+						<% for team in project.teams.order('name ASC') %>
+							<h3><%= team.name %></h3>
+							<div>
+								<ul>
+								<% for member in team.members %>
+									<li><%= link_to "#{member.name}", member %></li>
+								<% end %>
+								</ul>
+							</div>	
+						<% end %>
+
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<!-- end of #sidebar -->
+
+		<div id="main">
+			<%= yield %>
+		</div>
+		<!-- end of #main -->
+
+	</div>
+	<!--  end of #page-wrap -->
+	
 
 </body>
 </html>

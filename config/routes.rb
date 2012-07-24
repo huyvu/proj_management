@@ -1,7 +1,11 @@
 ProjManagement::Application.routes.draw do
   
 
-  resources :members
+  resources :tasks
+
+  resources :members do
+    resources :tasks
+  end
 
   resources :projects do
     resources :teams  

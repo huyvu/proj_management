@@ -4,7 +4,10 @@
   <b>Name:</b>
   <%= @member.name %>
 </p>
+<br/>
 
+<%= link_to "Add new task to member", new_member_task_path(@member) %>
+<br />
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
