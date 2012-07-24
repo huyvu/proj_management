@@ -1,0 +1,244 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+
+ /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* END RESET CSS */
+
+h1{
+	font-size: 25px;
+	font-weight: bold;
+	margin-bottom:20px;
+}
+a, a:active, a:visited{
+	color:#1985A8;
+	text-decoration: none;
+}
+
+body{
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+
+/******** ACCORDION STYLE ***********/
+#proj_accord h3{
+border:none;
+}
+
+#team_accord{
+width:150px;
+padding-right:20px;
+text-align:center;
+border:none;
+}
+#team_accord div{
+border:none;
+}
+
+/******** END ACCORDION STYLE *********/
+/******** PAGE-WRAP **********/
+#page-wrap{
+	min-width: 960px;
+	max-width: 100%;
+	margin:0 auto;
+}
+/******** END PAGE-WRAP **********/
+
+/**** HEADER STYLE *****/
+#header{
+	height:39px;
+	padding:10px 0 ;
+	background:#2A2E36;
+}
+#top_menu{
+	height:100%;
+	padding-left: 20px;
+}
+#top_menu ul li{
+	display:inline-block;
+	padding:10px 10px 10px 30px;
+	margin-right:10px;
+	/*background:#3F4551;*/
+	border-radius: 3px;
+}
+
+#top_menu ul li a{
+	text-decoration: none;
+	color:white;
+	font-size:12px;
+	font-family: "Droid Sans",Helvetica,sans-serif;
+	font-weight:bold;
+	line-height: 1.125em;
+}
+
+.menu_user{
+	background:#3F4551 url("icon/ic_user.png") no-repeat left 8px center;
+}
+.menu_settings{
+	background:#3F4551 url("icon/ic_settings.png") no-repeat left 8px center;
+}
+.menu_power{
+	background:#3F4551 url("icon/ic_power.png") no-repeat left 8px center;
+}
+/****  END HEADER STYLE *****/
+
+
+#sidebar{
+float:left;
+padding:20px 30px 0 20px;
+width:200px;
+}
+#main{
+padding-left:250px;
+padding-top:20px;
+}
+
+#team_accord{
+width:150px;
+padding-right:20px;
+text-align:center;
+}
+
+/************* TABLE STYLE *************/
+table.listing {
+	font-size:13px;
+}
+table.listing thead{
+	background:#3F4551;
+	color:white;
+}
+table.listing thead tr th{
+	border-right:1px solid #7A7C7D;
+}
+table.listing tr th,td{
+	padding:10px 40px 10px 20px;
+}
+table.listing tr td a{
+	margin-right:10px;
+}
+
+/************ END TABLE STYLE ***********/
+
+/**** FORM ELEMENT STYLE *****/
+form input[type="text"], input[type="password"], textarea{
+	border:1px solid #d3d3d3;
+	padding:12px 7px;
+	margin-top: 10px;
+	border-radius: 3px;
+}
+form input[type="text"]:focus, input[type="password"]:focus, textarea:focus{
+	border:1px solid #ACD5E3;//#bbbdbe;
+}
+form input[type="password"], input[type="text"]{
+	width:300px;
+}
+
+form textarea{
+	width:430px;
+	height:180px;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 14px;
+}
+
+form label{
+	text-transform: uppercase;
+	font-size: 14px;
+}
+form div.field{
+	margin-top:10px;
+}
+form input[type="text"].error, input[type="password"].error, textarea.error{
+	border:1px solid #ff876f;
+}
+
+.button input, .button a{
+	cursor: pointer;
+	font-weight: bold;
+	font-size:12px;
+	padding:10px 36px 10px 10px;
+	margin:20px 0;
+	text-transform: uppercase;
+	color:white;
+	background:#2069b4 url('icon/ic_right.png') no-repeat;
+	background-position: right 10px center;
+	border-radius: 3px;
+	border: medium none;
+}
+
+.button input:hover, .button a:hover{
+	background:#5081b3 url('icon/ic_right.png') no-repeat right 10px center;
+}
+
+/**** END FORM ELEMENT STYLE *****/
+
+/******* NOTICE MESSAGE STYLE **********/
+div.notice{
+
+	display:inline-block;
+	padding:10px 40px 10px 20px;
+	background:#E7FAE6;
+	border-radius:3px;
+	border:1px solid #B7CBB6;
+	color:green;
+	font-size:14px;
+	margin-bottom:20px;
+}
+/******* END NOTICE MESSAGE STYLE **********/

@@ -1,13 +1,28 @@
 <h1>Listing projects</h1>
 
-<ul>
+<br>
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
 
 <% @projects.each do |project| %>
-  <li><%= link_to "#{project.name}", project %></li>
+  <tr>
+    <td><%= link_to "#{project.name}", project %></td>
+    <td><%= project.description %></td>
+    <td>
+    <%= link_to image_tag('icon/ic_edit.png'), edit_project_path(project) %>
+    <%= link_to image_tag('icon/ic_delete.png'), project, method: :delete, data: { confirm: 'Are you sure?' } %>
+</td>
+  </tr>
 <% end %>
+</table>
 
-</ul>
 <br />
 
 <%= link_to 'New Project', new_project_path %>
-

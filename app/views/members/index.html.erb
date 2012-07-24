@@ -1,19 +1,20 @@
 <h1>Listing members</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
 
 <% @members.each do |member| %>
   <tr>
-    <td><%= member.name %></td>
-    <td><%= link_to 'Show', member %></td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to "#{member.name}", member %></td>
+    <td>
+    <%= link_to image_tag('icon/ic_edit.png'), edit_member_path(member) %>
+    <%= link_to image_tag('icon/ic_delete.png'), member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

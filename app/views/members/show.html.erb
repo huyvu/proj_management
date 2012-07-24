@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<div class="notice"><%= notice %></div>
+<% end %>
 
 <p>
   <b>Name:</b>
@@ -6,8 +8,34 @@
 </p>
 <br/>
 
-<%= link_to "Add new task to member", new_member_task_path(@member) %>
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Start date</th>
+      <th>Due date</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+
+<% @member.tasks.each do |task| %>
+  <tr>
+    <td><%= link_to "#{task.name}", task %></td>
+    <td><%= task.description %></td>
+    <td><%= task.start_date %></td>
+    <td><%= task.due_date %></td>
+    <td>
+    <%= link_to image_tag('icon/ic_edit.png'), edit_member_task_path(@member,task) %>
+    <%= link_to image_tag('icon/ic_delete.png'), task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div class="button">
+<%= link_to "Add new task", new_member_task_path(@member) %>
+</div>
 <br />
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
