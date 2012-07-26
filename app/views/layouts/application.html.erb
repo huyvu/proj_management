@@ -2,10 +2,35 @@
 <html>
 <head>
   <title>ProjManagement</title>
+  <link rel="shortcut icon" href="http://www.designchemical.com/favicon.ico" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  <%= stylesheet_link_tag   "application" %>
+
  <%= javascript_include_tag  "application" %>
   <%= csrf_meta_tags %>
+
+<script>
+$(document).ready(function () {
+  var checkCookie = $.cookie("nav-item");
+  if (checkCookie != "") {
+	$('#nav > li > a:eq('+checkCookie+')').addClass('active').next().show();
+  }
+  $('#nav > li > a').click(function(){
+      var navIndex = $('#nav > li > a').index(this);
+	  $.cookie("nav-item", navIndex);
+	  $('#nav li ul').slideUp();
+	   if ($(this).next().is(":visible")){
+		   $(this).next().slideUp();
+	   } else {
+	   $(this).next().slideToggle();
+	   }
+	   $('#nav li a').removeClass('active');
+	   $(this).addClass('active');
+  });
+});
+</script>
+
+
 </head>
 <body>
 
@@ -13,42 +38,42 @@
 		<div id="header">
 			<div id="top_menu">
 				<ul>
-					<li class="menu_user"><a href="#">admin@example.com としてログインします。</a></li>
+					<li class="menu_home"><%= link_to "ホーム", root_path%></li>
+					<li class="menu_user"><a href="#"><%= current_user.email %> としてログインします。</a>
+						<ul>
+							<li><%= link_to "パスワードを変更する", edit_user_registration_path %></li>
+							<li><%= link_to "ログオフ", destroy_user_session_path, :method => :delete %></li>
+						</ul>
+					</li>
 					<li class="menu_settings"><a href="#">設定</a></li>
-					<li class="menu_power"><a href="#">ログオフ</a></li>
+					<li class="menu_power"><%= link_to "ログオフ", destroy_user_session_path, :method => :delete %></li>
 				</ul>
 			</div>
 		</div>
 		<!-- end of #header -->
 
-		<div id="sidebar">
-			<div id="proj_accord">
-				<% for project in Project.all %>
-					<h3><a href=""><%= project.name%></a></h3>
-					<div id="team_accord">
-
-						<% for team in project.teams.order('name ASC') %>
-							<h3><%= team.name %></h3>
-							<div>
-								<ul>
-								<% for member in team.members %>
-									<li><%= link_to "#{member.name}", member %></li>
-								<% end %>
-								</ul>
-							</div>	
+		<div id="container">
+			<div id="sidebar">
+				<ul id="nav">
+					<% for project in Project.all %>
+				    <li><%= link_to "#{project.name}", project %>
+					  <ul>
+					  	<% for team in project.teams.order('name ASC') %> 
+					    <li><%= link_to "#{team.name}", project_team_path(project,team) %></li>
 						<% end %>
-
-					</div>
-				<% end %>
+					  </ul>
+					</li>
+					<% end %>
+				</ul>
 			</div>
-		</div>
-		<!-- end of #sidebar -->
+			<!-- end of #sidebar -->
 
-		<div id="main">
-			<%= yield %>
+			<div id="main">
+				<%= yield %>
+			</div>
+			<!-- end of #main -->
 		</div>
-		<!-- end of #main -->
-
+		<!-- end of #container -->
 	</div>
 	<!--  end of #page-wrap -->
 	

@@ -2,34 +2,50 @@
 <div class="notice"><%= notice %></div>
 <% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
 
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
+<div class="info-details">
+  <h3><%= @project.name%></h3>
+  <table>
+    <tr>
+      <td width="200">Name</td>
+      <td><%= @project.name %></td>
+    </tr>
 
-<p>
-  <b>Start date:</b>
-  <%= @project.start_date %>
-</p>
+    <tr>
+      <td>Description</td>
+      <td><%= @project.description %></td>
+    </tr>
 
-<p>
-  <b>Due date:</b>
-  <%= @project.due_date %>
-</p>
+    <tr>
+      <td>Start date</td>
+      <td><%= @project.start_date %></td>
+    </tr>
+
+    <tr>
+      <td>Due date</td>
+      <td><%= @project.due_date %></td>
+    </tr>
+  </table>
+</div>
+
+
+
 
 <p>Teams</p>
+<br />
 <ul>
 <% @project.teams.order('name ASC').each do |t| %>
-	<li><%= link_to "#{t.name}", project_team_path(@project,t.id) %></li>
+	<li>
+		<%= link_to "#{t.name}", project_team_path(@project,t.id) %>
+		<%= link_to image_tag('icon/ic_edit.png'), edit_project_team_path(@project,t.id) %>
+      	<%= link_to image_tag('icon/ic_delete.png'), project_team_path(@project,t.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</li>
 <% end %>
 </ul>
-<%= link_to "Add team to project", new_project_team_path(@project) %><br/>
+<br/>
+<div class="button">
+<%= link_to "Add new team", new_project_team_path(@project) %><br/>
+</div>
+<br />
 
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

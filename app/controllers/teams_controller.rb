@@ -80,11 +80,13 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+    @project = Project.find(params[:project_id])
     @team = Team.find(params[:id])
+
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to teams_url }
+      format.html { redirect_to @project }
       format.json { head :no_content }
     end
   end

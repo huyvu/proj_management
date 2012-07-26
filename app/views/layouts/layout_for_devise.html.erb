@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Welcome to Web-base Project Management</title>
+	<link rel="shortcut icon" href="http://www.designchemical.com/favicon.ico" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<%= stylesheet_link_tag   "application" %>
+	<style type="text/css">
+		body{
+			background:url('/assets/bg-pattern-plain.jpg');
+		}
+	</style>
+	<%= javascript_include_tag  "application" %>
+	<%= csrf_meta_tags %>
+
+</head>
+<body>
+	<%= yield %>
+</body>
+</html>

@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
-  has_many :teams	
+  has_many :teams
+  has_many :tasks	
   attr_accessible :description, :due_date, :name, :start_date
 
   validates :name, presence: true, length: { maximum: 140 }

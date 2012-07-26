@@ -1,8 +1,9 @@
 class Task < ActiveRecord::Base
   belongs_to :member
-  attr_accessible :description, :due_date, :name, :start_date
+  belongs_to :project
+  attr_accessible :description, :due_date, :name, :start_date, :project_id
 
-  validates :name, :presence => true
+  validates :name, :project_id, :presence => true
   validates :name, length: { maximum: 140 }
   validates :description, length: { maximum: 255 }
   validates :start_date, :due_date, presence: true

@@ -3,39 +3,65 @@
 <% end %>
 
 <p>
-  <b>Name:</b>
-  <%= @member.name %>
+
+  <h1>Member : #<%= @member.name %></h1>
 </p>
 <br/>
 
-<table class="listing">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>Due date</th>
-      <th>Action</th>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Nunc tincidunt</a></li>
+    <li><a href="#tabs-2">Proin dolor</a></li>
+    <li><a href="#tabs-3">Aenean lacinia</a></li>
+  </ul>
+  <div id="tabs-1">
+    <% if @member.tasks.count > 0 %>
+      <table class="listing">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start date</th>
+            <th>Due date</th>
+            <th>Action</th>
 
-    </tr>
-  </thead>
+          </tr>
+        </thead>
 
-<% @member.tasks.each do |task| %>
-  <tr>
-    <td><%= link_to "#{task.name}", task %></td>
-    <td><%= task.description %></td>
-    <td><%= task.start_date %></td>
-    <td><%= task.due_date %></td>
-    <td>
-    <%= link_to image_tag('icon/ic_edit.png'), edit_member_task_path(@member,task) %>
-    <%= link_to image_tag('icon/ic_delete.png'), task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+      <% @member.tasks.each do |task| %>
+        <tr>
+          <td><%= Project.find(task.project_id).name %></td>
+          <td><%= link_to "#{task.name}", task %></td>
+          <td><%= task.description %></td>
+          <td><%= task.start_date %></td>
+          <td><%= task.due_date %></td>
+          <td>
+          <%= link_to image_tag('icon/ic_edit.png'), edit_member_task_path(@member,task) %>
+          <%= link_to image_tag('icon/ic_delete.png'), task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </table>
+    <% else %>
+      <div class="empty">There is no task for this member. Please add one.</div>
+    <% end %>
 
-<br />
-<div class="button">
-<%= link_to "Add new task", new_member_task_path(@member) %>
+    <br />
+    <div class="button">
+    <%= link_to "Add new task", new_member_task_path(@member) %>
+    </div>
+  </div>
+
+  <div id="tabs-2">
+    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+  </div>
+  
+  <div id="tabs-3">
+    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+  </div>
 </div>
+
+
 <br />
 

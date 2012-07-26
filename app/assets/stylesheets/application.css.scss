@@ -18,6 +18,14 @@
    License: none (public domain)
 */
 
+/*********** CSS3- BORDER-RADIUS **********/
+
+.rounded{
+	border-radius:3px;
+	behavior: url(ie-css3.htc);
+}
+/********** END CSS3 BORDER-RADIUS *********/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -104,40 +112,72 @@ border:none;
 
 /**** HEADER STYLE *****/
 #header{
-	height:39px;
-	padding:10px 0 ;
+	height:49px;
 	background:#2A2E36;
+	// margin-bottom:30px;
 }
-#top_menu{
-	height:100%;
+#top_menu ul{
 	padding-left: 20px;
+	padding-top:7px;
+	float:left;
 }
-#top_menu ul li{
-	display:inline-block;
-	padding:10px 10px 10px 30px;
+#top_menu ul li{	
+	padding:10px 10px 10px 35px;
 	margin-right:10px;
 	/*background:#3F4551;*/
 	border-radius: 3px;
+	float:left ;
+	position:relative;
 }
 
-#top_menu ul li a{
+#top_menu li a{
+	display:block;
 	text-decoration: none;
 	color:white;
 	font-size:12px;
 	font-family: "Droid Sans",Helvetica,sans-serif;
 	font-weight:bold;
-	line-height: 1.125em;
+
 }
 
-.menu_user{
-	background:#3F4551 url("icon/ic_user.png") no-repeat left 8px center;
+#top_menu ul li.menu_home{
+	background:#3F4551 url("icon/home.png") no-repeat;
+	background-position: 10px center;
 }
-.menu_settings{
-	background:#3F4551 url("icon/ic_settings.png") no-repeat left 8px center;
+
+#top_menu ul li.menu_user{
+	background:#3F4551 url("icon/ic_user.png") no-repeat;
+	background-position: 10px center;
 }
-.menu_power{
-	background:#3F4551 url("icon/ic_power.png") no-repeat left 8px center;
+#top_menu ul li.menu_settings{
+	background:#3F4551 url("icon/ic_settings.png") no-repeat;
+	background-position: 10px center;
 }
+#top_menu ul li.menu_power{
+	background:#3F4551 url("icon/ic_power.png") no-repeat;
+	background-position: 10px center;
+}
+#top_menu ul li ul{
+	position:absolute;
+	display:none;
+	margin-left:-35px;
+	padding-left:0;
+}
+#top_menu ul li ul li{
+	width:200px;
+	background: #3F4551;
+	// padding-right:10px;
+
+}
+#top_menu ul li ul li:hover{
+	background: #778899;
+}
+
+
+#top_menu ul li:hover ul{
+	display:block;
+}
+
 /****  END HEADER STYLE *****/
 
 
@@ -147,8 +187,8 @@ padding:20px 30px 0 20px;
 width:200px;
 }
 #main{
-padding-left:250px;
-padding-top:20px;
+padding-left:300px;
+padding-top:35px;
 }
 
 #team_accord{
@@ -175,19 +215,37 @@ table.listing tr td a{
 	margin-right:10px;
 }
 
+.info-details {
+	width:550px;
+	margin-bottom:30px;
+}
+.info-details h3{
+	background:#3F4551;
+	color:#fff;
+	padding:10px 20px;
+}
+.info-details table{
+	width:100%;
+	font-size:14px;
+	color:#474747;
+}
+.info-details table tr td{
+	border-bottom: 1px solid #eee;
+}
 /************ END TABLE STYLE ***********/
 
 /**** FORM ELEMENT STYLE *****/
-form input[type="text"], input[type="password"], textarea{
+form input[type="text"], input[type="password"], textarea, input[type="email"]{
+	@extend .rounded;
 	border:1px solid #d3d3d3;
 	padding:12px 7px;
 	margin-top: 10px;
-	border-radius: 3px;
+	// border-radius: 3px;
 }
-form input[type="text"]:focus, input[type="password"]:focus, textarea:focus{
+form input[type="text"]:focus, input[type="password"]:focus, textarea:focus, input[type="email"]:focus{
 	border:1px solid #ACD5E3;//#bbbdbe;
 }
-form input[type="password"], input[type="text"]{
+form input[type="password"], input[type="text"], input[type="email"]{
 	width:300px;
 }
 
@@ -205,40 +263,124 @@ form label{
 form div.field{
 	margin-top:10px;
 }
-form input[type="text"].error, input[type="password"].error, textarea.error{
+form input[type="text"].error, input[type="password"].error, input[type="email"].error, textarea.error, select.error{
 	border:1px solid #ff876f;
 }
 
+form select{
+	@extend .rounded;
+	width: 150px;
+	height:35px;
+	margin-top:10px;
+	padding:7px;
+	// border-radius:3px;
+	border:1px solid #d3d3d3;
+}
 .button input, .button a{
+	@extend .rounded;
 	cursor: pointer;
-	font-weight: bold;
-	font-size:12px;
+	font: bold 13px Helvetica,Arial,sans-serif;
+
+	// font-size:13px;
 	padding:10px 36px 10px 10px;
-	margin:20px 0;
+	margin-top:20px;
+	margin-bottom:20px;
 	text-transform: uppercase;
 	color:white;
 	background:#2069b4 url('icon/ic_right.png') no-repeat;
-	background-position: right 10px center;
-	border-radius: 3px;
+	background-position: 90% 50%;
+	// border-radius: 3px;
 	border: medium none;
 }
 
 .button input:hover, .button a:hover{
-	background:#5081b3 url('icon/ic_right.png') no-repeat right 10px center;
+	background:#5081b3 url('icon/ic_right.png') no-repeat;
+	background-position:90% 50%;
 }
 
 /**** END FORM ELEMENT STYLE *****/
 
 /******* NOTICE MESSAGE STYLE **********/
 div.notice{
-
+	@extend .rounded;
 	display:inline-block;
 	padding:10px 40px 10px 20px;
 	background:#E7FAE6;
-	border-radius:3px;
+	// border-radius:3px;
 	border:1px solid #B7CBB6;
 	color:green;
 	font-size:14px;
 	margin-bottom:20px;
 }
 /******* END NOTICE MESSAGE STYLE **********/
+
+/************ EMPTY CONTENT MESSAGE ************/
+.empty{
+	@extend .rounded;
+	display:inline-block;
+	padding:15px 20px;
+	border:dashed 2px #d9d9d9;
+	// border-radius:5px;
+	margin:20px auto;
+	color:#A5A9AD;
+}
+/************ END EMPTY CONTENT MESSAGE ************/
+
+/*********** NAVIGATION ******************/
+#nav {
+	float: left; 
+	width: 230px; 
+	// border-top: 1px solid #999; 
+	// border-right: 1px solid #999; 
+	// border-left: 1px solid #999; 
+	margin: 15px 0;
+}
+#nav li a {
+	display: block; 
+	padding: 10px 15px; 
+	background: #3F4551; 
+	border-top: 1px solid #eee; 
+	border-bottom: 1px solid #999; 
+	text-decoration: none; 
+	color: #fff;
+}
+#nav li a:hover, #nav li a.active {background: #2A2E36; color: #fff;}
+#nav li ul {display: none;}
+#nav li ul li a {
+	padding: 10px 25px; 
+	background: #ececec; 
+	border-bottom: 1px dotted #ccc;
+	color:#000;
+}
+/********** END NAVIGATION *************/
+
+/********** SIGN IN ******************/
+
+#login-wrap{
+width:450px;
+margin:100px auto;
+background:#fff;
+box-shadow:5px 5px 15px #696969;
+}
+#login-wrap h2{
+text-align:center;
+font:bold 25px sans-serif;
+color:#fff;
+background: #3F4551;
+padding:5px 0;
+text-transform:uppercase;
+}
+#login-content{
+	padding-top:20px;
+	padding-left:50px;
+	padding-bottom:20px;
+}
+#login-content div{
+margin:10px 0;
+}
+#login-content input[type="email"],#login-content input[type="password"]{
+	width:300px;
+}
+
+
+/*********** END SIGN IN *************/

@@ -2,6 +2,8 @@ class Team < ActiveRecord::Base
   belongs_to :project
   has_and_belongs_to_many :members
 
+
+
   attr_accessible :name, :member_ids
 
   validates :name, :project_id, presence: true

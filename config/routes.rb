@@ -1,6 +1,10 @@
 ProjManagement::Application.routes.draw do
   
 
+  devise_for :users
+
+  resources :users
+
   resources :tasks
 
   resources :members do

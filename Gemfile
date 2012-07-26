@@ -23,6 +23,8 @@ end
 gem 'jquery-rails'
 
 gem "custom_error_message", "~> 1.1.1"
+
+gem 'devise'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
